@@ -77,6 +77,7 @@ The goal of DAVL Studio is to make data analysis simple, fast, and accessible. I
   - Matplotlib, Seaborn
   - Scikit-learn
 
+
 ## Conclusion
 
 DAVL Studio is a complete data analysis solution that integrates visualization, machine learning, and automated insights into a single platform. It enables users to explore data efficiently and make data-driven decisions with ease.
