@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptex Insight Engine - Cryptocurrency Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="terminal.css">
+</head>
+<body>
+    <!-- Node Monitor Header -->
+    <header class="node-monitor">
+        <div class="monitor-content">
+            <div class="left-section">
+                <h1 class="node-title">
+                    <span class="glow">⬢</span> CRYPTEX NODE
+                </h1>
+                <div class="status-indicator">
+                    <span class="pulse"></span>
+                    <span id="status-text">INITIALIZING...</span>
+                </div>
+            </div>
+            
+            <div class="center-section">
+                <div class="metric-box">
+                    <span class="metric-label">TOTAL LIQUIDITY</span>
+                    <span class="metric-value" id="total-liquidity">₹0</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-label">TOTAL ORDERS</span>
+                    <span class="metric-value" id="total-orders">0</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-label">SUCCESS RATE</span>
+                    <span class="metric-value" id="success-rate">0%</span>
+                </div>
+            </div>
+            
+            <div class="right-section">
+                <div class="node-info">
+                    <span id="node-id">NODE: LOADING...</span>
+                    <span id="timestamp">TIME: --:--</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Executive Summary Section -->
+        <section class="executive-summary">
+            <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Peak Hour</h3>
+                    <p id="peak-hour" class="metric-display">--</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Fastest Zone</h3>
+                    <p id="fastest-zone" class="metric-display">--</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Pop. Payment</h3>
+                    <p id="pop-payment" class="metric-display">--</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Avg Items</h3>
+                    <p id="avg-items" class="metric-display">--</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Top Vendor</h3>
+                    <p id="top-vendor" class="metric-display">--</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Volatility</h3>
+                    <p id="volatility" class="metric-display">--</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interleaved Content Grid -->
+        <div class="content-grid">
+            <!-- Visual 1: Trend Analysis -->
+            <section class="visual-panel">
+                <h2 class="panel-title">01 - TREND ANALYSIS</h2>
+                <div class="visual-container">
+                    <img id="img-trends" src="#" alt="Trend Analysis" class="visual-image">
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h2 class="panel-title">STATS: ORDER METRICS</h2>
+                <div class="stats-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Avg Order Amount</td>
+                                <td id="stat-avg-order">₹0</td>
+                            </tr>
+                            <tr>
+                                <td>Median Order Amount</td>
+                                <td id="stat-median-order">₹0</td>
+                            </tr>
+                            <tr>
+                                <td>Std Deviation</td>
+                                <td id="stat-std-order">₹0</td>
+                            </tr>
+                            <tr>
+                                <td>Min Amount</td>
+                                <td id="stat-min-order">₹0</td>
+                            </tr>
+                            <tr>
+                                <td>Max Amount</td>
+                                <td id="stat-max-order">₹0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Visual 2: Correlation Heatmap -->
+            <section class="visual-panel">
+                <h2 class="panel-title">02 - CORRELATION MATRIX</h2>
+                <div class="visual-container">
+                    <img id="img-correlation" src="#" alt="Correlation Heatmap" class="visual-image">
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h2 class="panel-title">STATS: DELIVERY METRICS</h2>
+                <div class="stats-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Avg Delivery Time</td>
+                                <td id="stat-avg-delivery">0 min</td>
+                            </tr>
+                            <tr>
+                                <td>Median Delivery Time</td>
+                                <td id="stat-median-delivery">0 min</td>
+                            </tr>
+                            <tr>
+                                <td>Std Deviation</td>
+                                <td id="stat-std-delivery">0 min</td>
+                            </tr>
+                            <tr>
+                                <td>Min Delivery</td>
+                                <td id="stat-min-delivery">0 min</td>
+                            </tr>
+                            <tr>
+                                <td>Max Delivery</td>
+                                <td id="stat-max-delivery">0 min</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Visual 3: Distribution & Outliers -->
+            <section class="visual-panel">
+                <h2 class="panel-title">03 - DISTRIBUTION & OUTLIERS</h2>
+                <div class="visual-container">
+                    <img id="img-distribution" src="#" alt="Distribution Analysis" class="visual-image">
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h2 class="panel-title">STATS: ORDER STATUS</h2>
+                <div class="stats-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="status-tbody">
+                            <tr>
+                                <td>Loading...</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Visual 4: PCA Analysis -->
+            <section class="visual-panel">
+                <h2 class="panel-title">04 - PCA ANALYSIS</h2>
+                <div class="visual-container">
+                    <img id="img-pca" src="#" alt="PCA Analysis" class="visual-image">
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h2 class="panel-title">STATS: FEATURE STATISTICS</h2>
+                <div class="stats-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Mean</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Order Hour (Mean)</td>
+                                <td id="stat-order-hour">0h</td>
+                            </tr>
+                            <tr>
+                                <td>Quantity (Mean)</td>
+                                <td id="stat-quantity">0</td>
+                            </tr>
+                            <tr>
+                                <td>Dataset Records</td>
+                                <td id="stat-records">0</td>
+                            </tr>
+                            <tr>
+                                <td>Total Columns</td>
+                                <td id="stat-columns">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Visual 5: K-Means Clustering -->
+            <section class="visual-panel">
+                <h2 class="panel-title">05 - K-MEANS CLUSTERING</h2>
+                <div class="visual-container">
+                    <img id="img-kmeans" src="#" alt="K-Means Clustering" class="visual-image">
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h2 class="panel-title">ANALYTICS: MARKET INTEL</h2>
+                <div class="stats-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>KPI</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Delivered Orders</td>
+                                <td id="stat-delivered">0</td>
+                            </tr>
+                            <tr>
+                                <td>Delayed Orders</td>
+                                <td id="stat-delayed">0</td>
+                            </tr>
+                            <tr>
+                                <td>Cancelled Orders</td>
+                                <td id="stat-cancelled">0</td>
+                            </tr>
+                            <tr>
+                                <td>Q25 Order Amount</td>
+                                <td id="stat-q25">₹0</td>
+                            </tr>
+                            <tr>
+                                <td>Q75 Order Amount</td>
+                                <td id="stat-q75">₹0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Cryptex Insight Engine v1.0 | Cyberpunk Analytics Node | <span id="footer-time">--:--:--</span></p>
+        </footer>
+    </main>
+
+    <script src="logic.js"></script>
+</body>
+</html>
