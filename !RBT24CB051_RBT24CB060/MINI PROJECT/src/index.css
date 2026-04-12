@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 7% 5%;
+    --foreground: 45 18% 93%;
+    --card: 60 5% 9%;
+    --card-foreground: 45 18% 93%;
+    --popover: 60 5% 9%;
+    --popover-foreground: 45 18% 93%;
+    --primary: 18 81% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 20 100% 64%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 50 4% 15%;
+    --muted-foreground: 48 6% 47%;
+    --accent: 60 5% 12%;
+    --accent-foreground: 45 18% 93%;
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 120 50% 61%;
+    --success-foreground: 0 0% 100%;
+    --border: 53 6% 14%;
+    --input: 53 6% 14%;
+    --ring: 18 81% 50%;
+    --radius: 14px;
+    --radius-inner: 10px;
+    --radius-pill: 20px;
+    --sidebar-background: 60 7% 5%;
+    --sidebar-foreground: 48 6% 47%;
+    --sidebar-primary: 18 81% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 60 5% 12%;
+    --sidebar-accent-foreground: 45 18% 93%;
+    --sidebar-border: 53 6% 14%;
+    --sidebar-ring: 18 81% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .card-surface {
+    @apply bg-card border border-border rounded-[14px];
+  }
+  .pill-badge {
+    @apply rounded-[20px] px-3 py-1 text-xs font-mono;
+  }
+  .stat-number {
+    @apply font-heading text-[28px] font-bold text-foreground;
+  }
+  .label-mono {
+    @apply font-mono text-[11px] uppercase text-muted-foreground tracking-wider;
+  }
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-[20px] text-sm transition-colors duration-200 cursor-pointer;
+  }
+  .nav-item-active {
+    @apply bg-primary text-primary-foreground;
+  }
+  .nav-item-inactive {
+    @apply text-muted-foreground hover:bg-accent hover:text-foreground;
+  }
+  .trend-badge-up {
+    @apply text-success inline-flex items-center gap-1 text-xs font-mono;
+  }
+  .trend-badge-down {
+    @apply text-destructive inline-flex items-center gap-1 text-xs font-mono;
+  }
+  .priority-high {
+    @apply border-l-[3px] border-l-destructive;
+  }
+  .priority-med {
+    @apply border-l-[3px] border-l-[hsl(40,90%,50%)];
+  }
+  .priority-low {
+    @apply border-l-[3px] border-l-success;
+  }
+  .finding-card {
+    @apply card-surface border-l-[3px] border-l-primary p-5;
+  }
+}

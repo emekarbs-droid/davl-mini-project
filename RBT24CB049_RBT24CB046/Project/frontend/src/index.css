@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #f43f5e;
+  --color-bg-dark: #0f172a;
+  --color-card-bg: rgba(30, 41, 59, 0.7);
+  --color-text-main: #f8fafc;
+  --color-text-dim: #94a3b8;
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+@utility glass {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility gradient-text {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20;
+}
+
+@utility btn-secondary {
+  @apply bg-transparent hover:bg-white/10 text-white font-semibold py-2 px-6 rounded-lg border border-white/20 transition-all duration-300;
+}
+
+/* Custom base styles for standard elements */
+input {
+  @apply bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all;
+}
+
+table {
+  @apply w-full text-left border-collapse;
+}
+
+th {
+  @apply p-4 text-slate-400 font-medium border-b border-white/5;
+}
+
+td {
+  @apply p-4 border-b border-white/5;
+}
