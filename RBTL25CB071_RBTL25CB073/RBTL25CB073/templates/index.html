@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smartphone Analytics</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Smartphone Data Analytics Project</h1>
+
+<h2>Dataset Preview</h2>
+<div>
+    {{ rows|safe }}
+</div>
+
+<h2>EDA Graphs</h2>
+
+<img src="/static/output/heatmap.png" width="500">
+<img src="/static/output/histogram.png" width="500">
+<img src="/static/output/boxplot.png" width="500">
+<img src="/static/output/scatter.png" width="500">
+<img src="/static/output/pca.png" width="500">
+
+<h2>Model Scores</h2>
+
+<p>Linear Regression: {{ lr }}</p>
+<p>Logistic Regression: {{ log }}</p>
+<p>Decision Tree: {{ dt }}</p>
+<p>Random Forest: {{ rf }}</p>
+
+<img src="/static/output/model_comparison.png" width="600">
+
+</body>
+</html>
