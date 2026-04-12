@@ -76,28 +76,6 @@ The goal of DAVL Studio is to make data analysis simple, fast, and accessible. I
   - Pandas, NumPy
   - Matplotlib, Seaborn
   - Scikit-learn
- ## ⚙️ Setup & Installation
-
-Follow these steps to run the project locally:
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/DAVL-MINI-PROJECT.git
-cd DAVL-MINI-PROJECT
-
-### 2. Backend setup (FastAPI)
-cd Backend
-python -m venv venv
-
-### 3. Activate virtual environment
-venv\Scripts\activate
-
-### 4. Install Dependence
-pip install -r requirements.txt
-
-### 5. Run backend server
-python -m uvicorn main:app --reload --port 8000
-
 
 ## Conclusion
 
