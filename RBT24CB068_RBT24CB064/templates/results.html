@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    
+    <nav class="navbar">
+        <div class="logo">Data Analysis Dashboard</div>
+        <div class="nav-links">
+            <a href="/" class="outline-btn">Upload Another</a>
+            <a href="/download" class="primary-btn">Download Processed Data</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Tabs -->
+        <aside class="sidebar">
+            <button class="tab-link active" onclick="openTab(event, 'Overview')">Overview</button>
+            <button class="tab-link" onclick="openTab(event, 'Quality')">Data Quality</button>
+            <button class="tab-link" onclick="openTab(event, 'Preprocessing')">Preprocessing</button>
+            <button class="tab-link" onclick="openTab(event, 'EDA')">EDA</button>
+            <button class="tab-link" onclick="openTab(event, 'Stats')">Statistics</button>
+            <button class="tab-link" onclick="openTab(event, 'PCA')">PCA</button>
+            <button class="tab-link" onclick="openTab(event, 'LDA')">LDA</button>
+            <button class="tab-link" onclick="openTab(event, 'FA')">Factor Analysis</button>
+            <button class="tab-link" onclick="openTab(event, 'Insights')">Insights</button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            
+            <!-- OVERVIEW TAB -->
+            <div id="Overview" class="tab-content active">
+                <h2>Dataset Overview</h2>
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <h3>Rows</h3>
+                        <p>{{ shape[0] }}</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Columns</h3>
+                        <p>{{ shape[1] }}</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Memory Usage (MB)</h3>
+                        <p>{{ memory_mb }}</p>
+                    </div>
+                </div>
+                <h3>Data Preview</h3>
+                <div class="table-responsive">
+                    {{ data_preview | safe }}
+                </div>
+                <h3>Data Types</h3>
+                <div class="table-responsive">
+                    {{ dtypes | safe }}
+                </div>
+            </div>
+
+            <!-- QUALITY TAB -->
+            <div id="Quality" class="tab-content">
+                <h2>Data Quality</h2>
+                {% if missing_data %}
+                    <h3>Missing Values</h3>
+                    <div class="table-responsive">
+                       {{ missing_data | safe }}
+                    </div>
+                {% else %}
+                    <p class="success-msg">No missing values found!</p>
+                {% endif %}
+                
+                <div class="plot-container">
+                    {{ missing_heatmap | safe }}
+                </div>
+            </div>
+
+            <!-- PREPROCESSING TAB -->
+            <div id="Preprocessing" class="tab-content">
+                <h2>Preprocessing</h2>
+                <p>The backend automatically handled imputations, label encoding, and standard scaling. Below is the parsed and cleaned dataset preview:</p>
+                <div class="table-responsive">
+                    {{ processed_preview | safe }}
+                </div>
+            </div>
+
+            <!-- EDA TAB -->
+            <div id="EDA" class="tab-content">
+                <h2>Exploratory Data Analysis</h2>
+                {% if eda_hist %}
+                    <div class="plot-container">{{ eda_hist | safe }}</div>
+                {% endif %}
+                {% if eda_scatter %}
+                    <div class="plot-container">{{ eda_scatter | safe }}</div>
+                {% endif %}
+                {% if not eda_hist and not eda_scatter %}
+                    <p class="error-msg">Not enough numeric features for automated EDA.</p>
+                {% endif %}
+            </div>
+
+            <!-- STATS TAB -->
+            <div id="Stats" class="tab-content">
+                <h2>Statistical Summary</h2>
+                <div class="table-responsive">
+                    {{ summary_stats | safe }}
+                </div>
+                {% if stats_corr %}
+                    <div class="plot-container">{{ stats_corr | safe }}</div>
+                {% endif %}
+            </div>
+
+            <!-- PCA TAB -->
+            <div id="PCA" class="tab-content">
+                <h2>Principal Component Analysis</h2>
+                {% if pca_err %}
+                    <p class="error-msg">{{ pca_err }}</p>
+                {% else %}
+                    <div class="plot-container">{{ pca_scree | safe }}</div>
+                    {% if pca_scatter %}
+                        <div class="plot-container">{{ pca_scatter | safe }}</div>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <!-- LDA TAB -->
+            <div id="LDA" class="tab-content">
+                <h2>Linear Discriminant Analysis</h2>
+                {% if lda_err %}
+                    <p class="error-msg">{{ lda_err }}</p>
+                {% else %}
+                    <div class="plot-container">{{ lda_plot | safe }}</div>
+                {% endif %}
+            </div>
+
+            <!-- FACTOR ANALYSIS TAB -->
+            <div id="FA" class="tab-content">
+                <h2>Factor Analysis</h2>
+                {% if fa_err %}
+                    <p class="error-msg">{{ fa_err }}</p>
+                {% else %}
+                    <div class="plot-container">{{ fa_plot | safe }}</div>
+                {% endif %}
+            </div>
+
+            <!-- INSIGHTS TAB -->
+            <div id="Insights" class="tab-content">
+                <h2>Analyst Insights</h2>
+                <div class="insights-container">
+                    {% if insights %}
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            {% for item in insights %}
+                                {{ item | safe }}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No significant actionable insights detected based on standard rules.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- For Plotly dynamic loads if JS requires it, though included inline by python -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
