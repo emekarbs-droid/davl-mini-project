@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Nutrition Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  display:flex;
+  height:100vh;
+  background:#f4f6fb;
+}
+
+/* Sidebar */
+.sidebar{
+  width:280px;
+  background:white;
+  padding:20px;
+  box-shadow:2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar h2{
+  margin-bottom:20px;
+}
+
+.upload-box{
+  border:2px dashed #ccc;
+  padding:20px;
+  text-align:center;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.upload-box button{
+  margin-top:10px;
+  padding:8px 12px;
+  border:none;
+  background:#4f46e5;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.file-loaded{
+  margin-top:10px;
+  padding:10px;
+  background:#e0f7fa;
+  border-radius:8px;
+}
+
+/* Main */
+.main{
+  flex:1;
+  padding:30px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.section{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:5px;
+  font-weight:500;
+}
+
+select, input{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  background:#ef4444;
+  color:white;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.radio-group{
+  display:flex;
+  gap:20px;
+}
+
+button.predict{
+  margin-top:20px;
+  padding:12px;
+  width:100%;
+  border:none;
+  border-radius:10px;
+  background:#4f46e5;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.result{
+  margin-top:20px;
+  padding:15px;
+  background:#e8f5e9;
+  border-radius:10px;
+  display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>📂 Upload Data</h2>
+  <div class="upload-box">
+    Drag & drop file<br>
+    <button onclick="fakeUpload()">Browse files</button>
+  </div>
+  <div class="file-loaded" id="fileBox" style="display:none">
+    Loaded: Food_Nutrition.csv
+  </div>
+</div>
+
+<div class="main">
+  <div class="card">
+
+    <div class="section">
+      <label>Select Target Column</label>
+      <input type="text" value="Calories">
+    </div>
+
+    <div class="section">
+      <label>Select Features</label>
+      <div class="features">
+        <div class="tag">Protein ✕</div>
+        <div class="tag">Fat ✕</div>
+        <div class="tag">Carbs ✕</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Select ML Task</label>
+      <div class="radio-group">
+        <label><input type="radio" checked> Regression</label>
+        <label><input type="radio"> Classification</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Select Algorithm</label>
+      <select>
+        <option>Linear Regression</option>
+        <option>Decision Tree</option>
+        <option>Random Forest</option>
+      </select>
+    </div>
+
+    <button class="predict" onclick="showResult()">🚀 Train & Predict</button>
+
+    <div class="result" id="resultBox">
+      ✅ Model Trained Successfully!<br>
+      🔥 Sample Prediction: 245 kcal
+    </div>
+
+  </div>
+</div>
+
+<script>
+function fakeUpload(){
+  document.getElementById('fileBox').style.display='block';
+}
+
+function showResult(){
+  document.getElementById('resultBox').style.display='block';
+}
+</script>
+
+</body>
+</html>
