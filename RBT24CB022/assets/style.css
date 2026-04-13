@@ -1,0 +1,291 @@
+/* ============================================================
+   DAVL — Data Analysis & Visualization Lab
+   Premium Dark Theme for Streamlit
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---------- Root Variables ---------- */
+:root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #111827;
+    --bg-card: #1a1f35;
+    --bg-card-hover: #222845;
+    --border-color: #2a3050;
+    --text-primary: #e8ecf4;
+    --text-secondary: #8892a8;
+    --text-muted: #5a6478;
+    --accent-blue: #3b82f6;
+    --accent-blue-glow: rgba(59, 130, 246, 0.3);
+    --accent-purple: #8b5cf6;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --gradient-card: linear-gradient(145deg, #1a1f35 0%, #151a2e 100%);
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Global Styles ---------- */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1400px;
+}
+
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-primary);
+}
+
+/* ---------- Sidebar ---------- */
+[data-testid="stSidebar"] {
+    background: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-color);
+}
+
+[data-testid="stSidebar"] .block-container {
+    padding-top: 1.5rem;
+}
+
+/* ---------- Tab Styling ---------- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: var(--radius-sm);
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--text-primary);
+    background: var(--bg-card);
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--gradient-primary) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+    display: none;
+}
+
+.stTabs [data-baseweb="tab-border"] {
+    display: none;
+}
+
+/* ---------- Metric Cards ---------- */
+[data-testid="stMetric"] {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+[data-testid="stMetric"]:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+[data-testid="stMetricLabel"] {
+    color: var(--text-secondary) !important;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--text-primary) !important;
+    font-weight: 700;
+}
+
+/* ---------- DataFrame Styling ---------- */
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* ---------- Expander ---------- */
+[data-testid="stExpander"] {
+    background: var(--gradient-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md) !important;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+[data-testid="stExpander"]:hover {
+    border-color: var(--accent-blue);
+}
+
+[data-testid="stExpander"] summary {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ---------- Buttons ---------- */
+.stButton > button {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+.stButton > button:hover {
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+}
+
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+}
+
+.stDownloadButton > button:hover {
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+    transform: translateY(-1px);
+}
+
+/* ---------- File Uploader ---------- */
+[data-testid="stFileUploader"] {
+    background: var(--gradient-card);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ---------- Select Boxes ---------- */
+[data-testid="stSelectbox"] > div > div {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+}
+
+/* ---------- Headers ---------- */
+h1 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h2, h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ---------- Dividers ---------- */
+hr {
+    border: none;
+    height: 1px;
+    background: var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* ---------- Code blocks ---------- */
+code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg-card);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* ---------- Success / Warning / Error ---------- */
+[data-testid="stAlert"] {
+    border-radius: var(--radius-md);
+    border-left-width: 4px;
+}
+
+/* ---------- Plotly chart containers ---------- */
+.js-plotly-plot {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* ---------- Progress bars ---------- */
+.stProgress > div > div > div > div {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+}
+
+/* ---------- Spinner ---------- */
+.stSpinner > div {
+    border-top-color: var(--accent-blue) !important;
+}
+
+/* ---------- Multiselect ---------- */
+[data-testid="stMultiSelect"] span[data-baseweb="tag"] {
+    background: var(--accent-blue) !important;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+/* ---------- Animation: Fade-in ---------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.element-container {
+    animation: fadeIn 0.4s ease-out;
+}
